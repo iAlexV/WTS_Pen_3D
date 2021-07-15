@@ -40,7 +40,6 @@
       document.querySelector('.popup').classList.add('close')
     }
     function open() {
-      console.log('1')
       document.querySelector('.popup').classList.remove('close')
     }
   </script>
@@ -75,7 +74,7 @@
     let obj = null;
     loader.load('3d/scene.gltf', function (gltf) {
       obj = gltf;
-      obj.scene.scale.set(1, 1, 1);
+      obj.scene.scale.set(1, 1.3, 1.3);
 
       scene.add(obj.scene);
     });
@@ -83,12 +82,18 @@
     function animate() {
       requestAnimationFrame(animate);
 
-      if (obj)
+      if (obj) {
         obj.scene.rotation.y += 0.03;
-      obj.scene.rotation.z = -1.4;
+        obj.scene.rotation.z = -1.4;
+      } else {
+        return
+      }
+
 
       renderer.render(scene, camera);
     }
+
+
 
 
   </script>
